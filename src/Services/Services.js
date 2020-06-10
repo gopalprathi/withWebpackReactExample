@@ -1,7 +1,8 @@
 
 class Services {
     async getImages(){
-        let data = await fetch(`https://api.unsplash.com/collections${process.env.REACT_APP_API_KEY}`)
+        console.log('key: '+process.env.REACT_APP_API_KEY);
+        let data = await fetch(`https://api.unsplash.com/collections/?client_id=${process.env.REACT_APP_API_KEY}`)
         .then(res => res.json())
         .then(data => data)
         .catch(error=> null);
@@ -10,7 +11,7 @@ class Services {
     }
 
     async deleteImage(id){
-        let data = await fetch(`https://api.unsplash.com/collections/${id}${process.env.REACT_APP_API_KEY}`,{method:'delete'})
+        let data = await fetch(`https://api.unsplash.com/collections/${id}/?client_id=${process.env.REACT_APP_API_KEY}`,{method:'delete'})
         .then(res => res.json())
         .then(data => data)
         .catch(error=> null);
