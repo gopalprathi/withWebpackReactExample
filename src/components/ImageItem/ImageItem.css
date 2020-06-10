@@ -1,0 +1,20 @@
+.imgContainer{
+    margin: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    box-shadow: 2px 2px 11px #888;
+}
+.imgContainer img{
+    height: 300px;
+    width: 300px;
+}
+
+.imageInfoBar{
+    padding: 5px;
+}
+
+.imageDeleteBtn{
+    float: right;
+}
