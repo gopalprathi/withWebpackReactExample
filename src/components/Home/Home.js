@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Services from '../../Services/Services';
+import {Link} from 'react-router-dom';
 import ImageList from '../ImageList/ImageList';
 import './Home.css';
 
-export default class Home extends Component {
-    state = {
-        data: ''
-    }
+const Home = () => {
 
-    componentDidMount(){
-        Services.getImages().then(data => this.setState({data}));
-    }
+    const [imageData, setData] = useState([]);
 
-    componentWillUnmount(){
-        alert("Logged out");
-    }
+    useEffect(() => {
+        console.log('HomeHooks: componentDidMount');
+        Services.getImages().then(data => setData(data));
+    }, []);
 
-    shouldComponentUpdate(){
-        console.log("updating component");
-        return true;
-    }
-
-    componentDidUpdate(){
-        console.log("updated component");
-    }
-
-    deleteImageHandler = (id) => {
-        Services.deleteImage(id).then(data => this.setState({data}));
-    }
-
-    render() {
-        return (
-            <>
+    useEffect(()=>{
+        console.log("HomeHooks: componentDidUpdate");
+        return ( ()=>{
+           console.log('HomeHooks: componentWillUnmount');
+        });
+     }, [imageData]);
+        
+        if(imageData)
+        {
+            return(
+                <>
                 <Link to="/"><button className="primaryBtn">Logout</button></Link>
                 <h1>Image Gallary</h1>
                 <div className="container">
-                    <ImageList data = {this.state.data}  deleteImageHandler={this.deleteImageHandler} />
+                    {/* This function will draw the listview of images. */}
+                    <ImageList data={imageData}/>
                 </div>
-            </>
-        );
-    }
+                </>
+            )
+        }
+        else
+        {
+            return(
+                <h1>No data present</h1>
+            )
+        }
 }
+
+export default Home;
