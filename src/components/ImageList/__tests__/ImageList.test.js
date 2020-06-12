@@ -31,7 +31,7 @@ describe("tests for ImageList.js", () => {
     const wrapper = shallow(<ImageList {...props} />);
     // console.log("ImageList debug", wrapper.debug());
   });
-  it("renders the component ImageItem if props is provided with blank, should render something went wrong text", () => {
+  it("renders the component ImageItem if props is provided with blank", () => {
     const props = {
       data: '',
       deleteImageHandler: ''
@@ -40,7 +40,8 @@ describe("tests for ImageList.js", () => {
     // console.log("ImageList debug", wrapper.debug());
     // console.log("ImageList is", wrapper.debug());
     // isEmptyRender checks for null return.
-    expect(wrapper.isEmptyRender()).toBeTruthy();
+    // console.log("Wrapper is",wrapper.type());
+    expect(wrapper.type()).toBeNull();
   });
 });
 
