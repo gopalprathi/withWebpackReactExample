@@ -1,5 +1,6 @@
 import './ImageItem.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 {/* This function will draw the individual image. */}
 export default function ImageItem({imagedata}){
@@ -22,3 +23,7 @@ export default function ImageItem({imagedata}){
             :null
         )
 }
+
+ImageItem.propTypes = {
+    imagedata: PropTypes.object
+  }

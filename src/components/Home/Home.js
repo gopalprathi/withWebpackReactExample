@@ -3,6 +3,7 @@ import Services from '../../Services/Services';
 import {Link} from 'react-router-dom';
 import ImageList from '../ImageList/ImageList';
 import './Home.css';
+import PropTypes from 'prop-types';
 
 const Home = () => {
 
@@ -42,3 +43,7 @@ const Home = () => {
 }
 
 export default Home;
+
+Home.propTypes = {
+    imageData: PropTypes.array
+  }

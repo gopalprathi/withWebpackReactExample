@@ -1,6 +1,7 @@
 import './ImageList.css';
 import ImageItem from '../ImageItem/ImageItem';
 import React,{ useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const ImageList = ({data}) => {
     useEffect(() => {
@@ -28,3 +29,7 @@ const ImageList = ({data}) => {
 }
 
 export default ImageList;
+
+ImageList.propTypes = {
+    data: PropTypes.array
+  }
