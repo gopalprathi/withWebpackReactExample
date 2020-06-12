@@ -34,7 +34,7 @@ export default class Home extends Component {
         return (
             <>
                 <Link to="/"><button className="primaryBtn">Logout</button></Link>
-                <h1>Image Gallary</h1>
+                <h1>Image Gallery</h1>
                 <div className="container">
                     <ImageList data = {this.state.data}  deleteImageHandler={this.deleteImageHandler} />
                 </div>
