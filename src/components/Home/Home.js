@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Services from '../../Services/Services';
 import {Link} from 'react-router-dom';
 import ImageList from '../ImageList/ImageList';
@@ -41,7 +41,10 @@ const Home = (props) => {
 }
 
 Home.propTypes = {
-    imageData: PropTypes.array
+    data: PropTypes.array,
+    isLoading: PropTypes.bool,
+    loadingImages: PropTypes.func,
+    fetchedImages: PropTypes.func
   }
 
 const mapStateToProps = ({data, isLoading}) => ({data, isLoading})
