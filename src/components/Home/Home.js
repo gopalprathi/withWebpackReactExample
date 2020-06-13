@@ -3,12 +3,9 @@ import Services from '../../Services/Services';
 import {Link} from 'react-router-dom';
 import ImageList from '../ImageList/ImageList';
 import './Home.css';
-<<<<<<< HEAD
 import PropTypes from 'prop-types';
-=======
 import {connect} from 'react-redux';
 import {loadingImages, fetchedImages} from '../../action';
->>>>>>> development
 
 const Home = (props) => {
     console.log(props);
