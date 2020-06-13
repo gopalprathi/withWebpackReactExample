@@ -1,4 +1,4 @@
-const initialState = {data: '', isLoading: true}
+const initialState = {data: [], isLoading: true}
 
 const rootreducer = (state=initialState, action) =>{
     switch(action.type){

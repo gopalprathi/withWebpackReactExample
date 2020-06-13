@@ -8,7 +8,6 @@ import {connect} from 'react-redux';
 import {loadingImages, fetchedImages} from '../../action';
 
 const Home = (props) => {
-    console.log(props);
     useEffect(() => {
         props.loadingImages(true);
         Services.getImages().then(data => {
@@ -25,7 +24,7 @@ const Home = (props) => {
                 {props.data?
                 (<div className="container">
                     {/* This function will draw the listview of images. */}
-                    <ImageList data={props.data}/>
+                    <ImageList/>
                 </div>):
                 <h1>No data present</h1>
                 }
