@@ -3,47 +3,51 @@ import Services from '../../Services/Services';
 import {Link} from 'react-router-dom';
 import ImageList from '../ImageList/ImageList';
 import './Home.css';
+<<<<<<< HEAD
 import PropTypes from 'prop-types';
+=======
+import {connect} from 'react-redux';
+import {loadingImages, fetchedImages} from '../../action';
+>>>>>>> development
 
-const Home = () => {
-
-    const [imageData, setData] = useState([]);
-
+const Home = (props) => {
+    console.log(props);
     useEffect(() => {
-        console.log('HomeHooks: componentDidMount');
-        Services.getImages().then(data => setData(data));
+        props.loadingImages(true);
+        Services.getImages().then(data => {
+            props.loadingImages(false);
+            props.fetchedImages(data)});
     }, []);
-
-    useEffect(()=>{
-        console.log("HomeHooks: componentDidUpdate");
-        return ( ()=>{
-           console.log('HomeHooks: componentWillUnmount');
-        });
-     }, [imageData]);
         
-        if(imageData)
+        if(!props.isLoading)
         {
             return(
                 <>
                 <Link to="/"><button className="primaryBtn">Logout</button></Link>
-                <h1>Image Gallary</h1>
-                <div className="container">
+                <h1>Image Gallery</h1>
+                {props.data?
+                (<div className="container">
                     {/* This function will draw the listview of images. */}
-                    <ImageList data={imageData}/>
-                </div>
+                    <ImageList data={props.data}/>
+                </div>):
+                <h1>No data present</h1>
+                }
                 </>
             )
         }
         else
         {
             return(
-                <h1>No data present</h1>
+                <h1>Loading....</h1>
             )
         }
 }
 
-export default Home;
-
 Home.propTypes = {
     imageData: PropTypes.array
   }
+
+const mapStateToProps = ({data, isLoading}) => ({data, isLoading})
+const mapDispatchToProps = {loadingImages, fetchedImages}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
