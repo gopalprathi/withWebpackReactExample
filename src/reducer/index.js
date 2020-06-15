@@ -1,4 +1,4 @@
-const initialState = {data: [], isLoading: true}
+const initialState = {data: [], page: 1, isLoading: true}
 
 const rootreducer = (state=initialState, action) =>{
     switch(action.type){
@@ -10,7 +10,7 @@ const rootreducer = (state=initialState, action) =>{
             }
         
         case 'FETCHED_IMAGES':
-            return {...state, data: action.payload}
+            return {...state, page: state.page+1, data: state.data.concat(action.payload)}
 
         default: 
             return state;

@@ -1,11 +1,11 @@
 
 class Services {
-    async getImages(){
-        let data = await fetch(`https://api.unsplash.com/collections/?client_id=${process.env.REACT_APP_API_KEY}`)
+        async getImages(pageNumber){
+        let data = await fetch(`https://api.unsplash.com/photos/?per_page=4&page=${pageNumber}&client_id=${process.env.REACT_APP_API_KEY}`)
         .then(res => res.json())
         .then(data => data)
         .catch(error=> null);
-        // console.log(data);
+        console.log(data);
         return data;
     }
 

@@ -5,12 +5,13 @@ import ImageList from '../ImageList/ImageList';
 import './Home.css';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {loadingImages, fetchedImages} from '../../action';
+import {loadImages, loadingImages, fetchedImages} from '../../action';
+import {store} from '../../index'
 
 const Home = (props) => {
     useEffect(() => {
         props.loadingImages(true);
-        Services.getImages().then(data => {
+        Services.getImages(props.page).then(data => {
             props.loadingImages(false);
             props.fetchedImages(data)});
     }, []);
@@ -25,6 +26,7 @@ const Home = (props) => {
                 (<div className="container">
                     {/* This function will draw the listview of images. */}
                     <ImageList/>
+                    <button className="primaryBtn" onClick={()=>{store.dispatch({type: 'LOAD_IMAGES'})}}>LOAD PAGE {props.page}</button>
                 </div>):
                 <h1>No data present</h1>
                 }
@@ -46,7 +48,7 @@ Home.propTypes = {
     fetchedImages: PropTypes.func
   }
 
-const mapStateToProps = ({data, isLoading}) => ({data, isLoading})
+const mapStateToProps = ({data, page, isLoading}) => ({data, page, isLoading})
 const mapDispatchToProps = {loadingImages, fetchedImages}
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);

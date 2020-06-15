@@ -5,18 +5,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 const ImageList = ({data}) => {
-    console.log(data);
-    useEffect(() => {
-        console.log('ImageListHooks: componentDidMount');
-    }, []);
-
-    useEffect( ()=>{
-        console.log("ImageListHooks: componentDidUpdate");
-        return ( ()=>{
-           console.log('ImageListHooks: componentWillUnmount');
-        });
-     }, [data]);
-
     if(data)
     {
         return(

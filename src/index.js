@@ -5,17 +5,17 @@ import App from "./App";
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './reducer';
-//import saga from './sagas';
-//import createSagaMiddleware from 'redux-saga';
+import saga from './sagas';
+import createSagaMiddleware from 'redux-saga';
 
 // create the saga middleware
-//const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 //apply middleware on store
-const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 //run saga generator fn
-//sagaMiddleware.run(saga);
+sagaMiddleware.run(saga);
 
 //render app with provider
 ReactDOM.render( <Provider store={store}> <App/> </Provider>, document.getElementById('root') );

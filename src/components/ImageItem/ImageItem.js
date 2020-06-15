@@ -14,9 +14,9 @@ export default function ImageItem({imagedata}){
         return (
             (imagedata)?
             <figure className="imgContainer" ref={divRef}> 
-                <img src={imagedata.cover_photo.urls.small} alt={imagedata.cover_photo.alt_description} />
+                <img src={imagedata.urls.small} alt={imagedata.alt_description} />
                 <div className="imageInfoBar">
-                    <span>{imagedata.cover_photo.likes} Likes</span>
+                    <span>{imagedata.likes} Likes</span>
                     <button className="imageDeleteBtn" onClick={() => removeImage()}>Delete</button>
                 </div>
             </figure>
